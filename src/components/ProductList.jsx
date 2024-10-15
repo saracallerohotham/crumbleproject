@@ -3,7 +3,7 @@ import { menu } from "../assets/menu/menu"; // Ruta ajustada
 import CategoryFilter from "./CategoryFilter"; // Asegúrate de que esta ruta sea correcta
 import ProductCard from "./ProductCard"; // Importa el componente ProductCard
 
-export const ProductList = () => {
+const ProductList = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   // Filtrar productos según la categoría seleccionada
@@ -36,3 +36,5 @@ export const ProductList = () => {
     </section>
   );
 };
+
+export default ProductList;

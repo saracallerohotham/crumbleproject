@@ -1,6 +1,6 @@
 import heroVideo from "../assets/heroVideo.mp4"; // Ajusta la ruta según sea necesario
 
-export function Hero() {
+function Hero() {
   return (
     <div className="relative z-0 h-96 bg-gray-900 text-white flex justify-center items-center">
       {/* Video MP4 embebido */}
@@ -22,3 +22,5 @@ export function Hero() {
     </div>
   );
 }
+
+export default Hero;

@@ -141,7 +141,3 @@ export const menu = [
     category: "Classics",
   },
 ];
-
-menu.forEach((product) => {
-  console.log(product.category);
-});

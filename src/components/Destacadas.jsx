@@ -1,7 +1,7 @@
 import { destacadas } from "../data/destacadas";
 import { DestacadaCard } from "./DestacadaCard";
 
-export function Destacadas() {
+function Destacadas() {
   return (
     <div className="container mx-auto px-4 py-8">
       <p className="bg-pink-300 rounded-lg py-2 px-3 inline-block font-semibold">
@@ -25,3 +25,5 @@ export function Destacadas() {
     </div>
   );
 }
+
+export default Destacadas;

@@ -2,15 +2,12 @@ import { menu } from "../assets/menu/menu";
 import PropTypes from "prop-types";
 
 const CategoryFilter = ({ selectedCategory, setSelectedCategory }) => {
-  // Filtra categorías únicas y elimina valores undefined
   const categories = [
-    "all",
+    "All",
     ...new Set(
       menu.map((product) => product.category).filter((category) => category)
     ),
   ];
-
-  console.log(categories); // Verifica las categorías aquí
 
   return (
     <div className="category-filter">

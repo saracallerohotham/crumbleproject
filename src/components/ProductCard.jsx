@@ -1,6 +1,21 @@
+import { useContext } from "react";
 import PropTypes from "prop-types";
+import { CartContext } from "../context"; // Asegúrate de que la ruta sea correcta
 
 function ProductCard({ imageSrc, title, description, price }) {
+  const { addToCart } = useContext(CartContext); // Obtener la función addToCart
+
+  const handleAddToCart = () => {
+    const product = {
+      id: new Date().getTime(), // Generar un ID único temporalmente
+      imageSrc,
+      title,
+      description,
+      price,
+    };
+    addToCart(product);
+  };
+
   return (
     <div className="relative w-full h-64 group">
       {/* Imagen con bordes redondeados */}
@@ -17,12 +32,12 @@ function ProductCard({ imageSrc, title, description, price }) {
         <span className="block text-lg font-bold mb-4">{price}</span>
 
         {/* Botón */}
-        <a
-          href="#!"
-          className="px-8 py-3 bg-transparent text-white font-bold rounded-full hover:bg-transparent  hover:border-white"
+        <button
+          onClick={handleAddToCart} // Llama a handleAddToCart al hacer clic
+          className="px-8 py-3 bg-transparent text-white font-bold rounded-full hover:bg-transparent hover:border-white"
         >
           Order Now
-        </a>
+        </button>
       </div>
     </div>
   );
