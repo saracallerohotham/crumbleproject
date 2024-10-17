@@ -1,8 +1,8 @@
-import heroVideo from "../assets/heroVideo.mp4"; // Ajusta la ruta según sea necesario
+import heroVideo from "../assets/heroVideo.mp4";
 
 function Hero() {
   return (
-    <div className="relative z-0 h-96 bg-gray-900 text-white flex justify-center items-center">
+    <div className="relative top-[-80px] z-0 h-96 bg-gray-900 text-white flex justify-center items-center">
       <video
         className="absolute top-0 left-0 w-full h-full object-cover"
         autoPlay

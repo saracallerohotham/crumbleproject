@@ -1,60 +1,27 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout.jsx";
-import SignIn from "./pages/SignIn";
-import Locations from "./pages/Locations";
-import Contact from "./pages/Contact";
-import Cart from "./pages/Cart";
+
 import { CartProvider } from "./context";
-import Destacadas from "./components/Destacadas";
-import ProductList from "./components/ProductList";
+import Home from "./pages/home/Home.jsx";
+import SignIn from "./pages/siginPage/SignIn.jsx";
+import Locations from "./pages/Locations/Locations.jsx";
+import Contact from "./pages/Contact/Contact.jsx";
+import Cart from "./pages/cartPage/Cart.jsx";
+import ErrorPage from "./pages/error/ErrorPage.jsx";
 
 function App() {
   return (
     <CartProvider>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Layout>
-              {/* Solo se renderizan en la ruta principal */}
-              <Destacadas />
-              <ProductList />
-            </Layout>
-          }
-        />
-        <Route
-          path="/cart"
-          element={
-            <Layout>
-              <Cart />
-            </Layout>
-          }
-        />
-        <Route
-          path="/signin"
-          element={
-            <Layout>
-              <SignIn />
-            </Layout>
-          }
-        />
-        <Route
-          path="/locations"
-          element={
-            <Layout>
-              <Locations />
-            </Layout>
-          }
-        />
-        <Route
-          path="/contact"
-          element={
-            <Layout>
-              <Contact />
-            </Layout>
-          }
-        />
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/locations" element={<Locations />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </Layout>
     </CartProvider>
   );
 }
