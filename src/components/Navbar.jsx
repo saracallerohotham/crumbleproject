@@ -7,7 +7,7 @@ import { CartContext } from "../context";
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { cartItems } = useContext(CartContext); // Obtener el carrito desde el contexto
+  const { cartItems } = useContext(CartContext);
 
   useEffect(() => {
     const handleScroll = () => {
