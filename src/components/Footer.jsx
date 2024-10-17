@@ -1,9 +1,10 @@
-const Footer = () => {
-  return (
-    <footer>
-      <p>Footer</p>
-    </footer>
-  );
-};
 
-export default Footer;
+function Footer() {
+  return (
+    <div className="bg-red-500 bottom-0">
+      FOOTER
+    </div>
+  )
+}
+
+export default Footer

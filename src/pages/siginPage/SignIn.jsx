@@ -1,6 +1,6 @@
 const SignIn = () => {
   return (
-    <div>
+    <div className="min-h-dvh bg-green-500">
       <h1>Sign In Page</h1>
     </div>
   );
