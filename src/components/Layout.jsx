@@ -1,20 +1,13 @@
 import PropTypes from "prop-types";
+import Header from "./Header";
 import Footer from "./Footer";
-import { Navbar } from "./Navbar";
-
 
 const Layout = ({ children }) => {
   return (
     <>
-    <header>
-      <Navbar />
-    </header>
-      <main className="mt-20">
-        {children}
-      </main>
-      <footer>
-        <Footer />
-      </footer>
+      <Header />
+      <main>{children}</main>
+      <Footer />
     </>
   );
 };

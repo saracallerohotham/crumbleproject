@@ -1,19 +1,18 @@
 import { useState } from "react";
 import { menu } from "../assets/menu/menu";
 import CategoryFilter from "./CategoryFilter";
-import ProductCard from "./ProductCard";
+import { ProductCard } from "./ProductCard";
 
 const ProductList = () => {
-  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   const filteredProducts =
-    selectedCategory === "all"
+    selectedCategory === "All"
       ? menu
       : menu.filter((product) => product.category === selectedCategory);
 
   return (
     <section className="bg-[#fbcfe8] bg-opacity-45 p-8">
-      {" "}
       <CategoryFilter
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
@@ -22,6 +21,7 @@ const ProductList = () => {
         {filteredProducts.map((product) => (
           <ProductCard
             key={product.id}
+            id={product.id} // Pasamos el id aquí
             imageSrc={product.imageSrc}
             title={product.title}
             description={product.description}

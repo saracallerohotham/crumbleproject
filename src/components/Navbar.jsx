@@ -7,7 +7,11 @@ import { CartContext } from "../context";
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { cartItems } = useContext(CartContext);
+  const [cart] = useContext(CartContext);
+
+  const quantity = cart.reduce((acc, curr) => {
+    return acc + curr.quantity;
+  }, 0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,7 +56,7 @@ export const Navbar = () => {
             <Link to="/cart" className="flex items-center">
               <FaShoppingCart className="mr-1" />
               <span className="bg-pink-500 text-white px-2 rounded-full">
-                {cartItems.length}
+                {quantity}
               </span>
             </Link>
           </li>
@@ -96,7 +100,7 @@ export const Navbar = () => {
               >
                 <FaShoppingCart className="mr-1" />
                 <span className="ml-1 bg-pink-500 text-white px-2 rounded-full">
-                  {cartItems.length}
+                  {}
                 </span>
               </Link>
             </li>
