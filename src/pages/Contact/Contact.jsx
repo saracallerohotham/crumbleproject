@@ -1,4 +1,3 @@
-// src/components/Contact.js
 const Contact = () => {
   return (
     <div className="bg-pink-100 text-gray-800 min-h-screen py-8">

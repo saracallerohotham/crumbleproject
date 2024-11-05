@@ -22,6 +22,10 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleLinkClick = () => {
+    setIsOpen(false); // Cerrar el menú hamburguesa al hacer clic en un enlace
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 w-full transition-all duration-300 ${
@@ -72,28 +76,45 @@ export const Navbar = () => {
         <div className="md:hidden bg-[#f9f3e4] shadow-lg p-4 mt-2 rounded-b-lg">
           <ul className="flex flex-col items-center space-y-4">
             <li>
-              <Link to="/" className="hover:text-gray-500 font-bold">
+              <Link
+                to="/"
+                onClick={handleLinkClick}
+                className="hover:text-gray-500 font-bold"
+              >
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/signin" className="hover:text-gray-500 font-bold">
+              <Link
+                to="/signin"
+                onClick={handleLinkClick}
+                className="hover:text-gray-500 font-bold"
+              >
                 Sign In
               </Link>
             </li>
             <li>
-              <Link to="/locations" className="hover:text-gray-500 font-bold">
+              <Link
+                to="/locations"
+                onClick={handleLinkClick}
+                className="hover:text-gray-500 font-bold"
+              >
                 Locations
               </Link>
             </li>
             <li>
-              <Link to="/contact" className="hover:text-gray-500 font-bold">
+              <Link
+                to="/contact"
+                onClick={handleLinkClick}
+                className="hover:text-gray-500 font-bold"
+              >
                 Contact
               </Link>
             </li>
             <li>
               <Link
                 to="/cart"
+                onClick={handleLinkClick}
                 className="hover:text-gray-500 flex items-center font-bold"
               >
                 <FaShoppingCart className="mr-1" />
