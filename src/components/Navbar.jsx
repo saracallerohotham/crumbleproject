@@ -51,7 +51,6 @@ export const Navbar = () => {
               Contact
             </Link>
           </li>
-
           <li>
             <Link to="/cart" className="flex items-center">
               <FaShoppingCart className="mr-1" />
@@ -70,37 +69,36 @@ export const Navbar = () => {
         </button>
       </div>
       {isOpen && (
-        <div className="md:hidden bg-white">
+        <div className="md:hidden bg-[#f9f3e4] shadow-lg p-4 mt-2 rounded-b-lg">
           <ul className="flex flex-col items-center space-y-4">
             <li>
-              <Link to="/" className="hover:text-gray-500">
+              <Link to="/" className="hover:text-gray-500 font-bold">
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/signin" className="hover:text-gray-500">
+              <Link to="/signin" className="hover:text-gray-500 font-bold">
                 Sign In
               </Link>
             </li>
             <li>
-              <Link to="/locations" className="hover:text-gray-500">
+              <Link to="/locations" className="hover:text-gray-500 font-bold">
                 Locations
               </Link>
             </li>
             <li>
-              <Link to="/contact" className="hover:text-gray-500">
+              <Link to="/contact" className="hover:text-gray-500 font-bold">
                 Contact
               </Link>
             </li>
-
             <li>
               <Link
                 to="/cart"
-                className="hover:text-gray-500 flex items-center"
+                className="hover:text-gray-500 flex items-center font-bold"
               >
                 <FaShoppingCart className="mr-1" />
                 <span className="ml-1 bg-pink-500 text-white px-2 rounded-full">
-                  {}
+                  {quantity}
                 </span>
               </Link>
             </li>
