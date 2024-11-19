@@ -9,62 +9,62 @@ export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [cart] = useContext(CartContext);
 
-  const quantity = cart.reduce((acc, curr) => {
-    return acc + curr.quantity;
-  }, 0);
+  const quantity = cart.reduce((acc, curr) => acc + curr.quantity, 0);
+
+  const handleScroll = () => setIsScrolled(window.scrollY > 0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
-    };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleLinkClick = () => {
-    setIsOpen(false); // Cerrar el menú hamburguesa al hacer clic en un enlace
-  };
+  const navLinks = [
+    { to: "/", label: "Home" },
+    { to: "/signin", label: "Sign In" },
+    { to: "/locations", label: "Locations" },
+    { to: "/contact", label: "Contact" },
+    { to: "/cart", label: "Cart", icon: <FaShoppingCart /> },
+  ];
+
+  const renderLinks = (isMobile = false) => (
+    <ul
+      className={`${
+        isMobile
+          ? "flex flex-col items-center space-y-4"
+          : "hidden md:flex space-x-6 font-bold"
+      }`}
+    >
+      {navLinks.map(({ to, label, icon }) => (
+        <li key={to}>
+          <Link
+            to={to}
+            onClick={isMobile ? () => setIsOpen(false) : undefined}
+            className={`hover:text-gray-500 ${isMobile ? "font-bold" : ""} ${
+              icon ? "flex items-center" : ""
+            }`}
+          >
+            {icon && <span className="mr-1">{icon}</span>}
+            {label}
+            {label === "Cart" && (
+              <span className="ml-1 bg-pink-500 text-white px-2 rounded-full">
+                {quantity}
+              </span>
+            )}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full transition-all duration-300 z-50 ${
         isScrolled ? "bg-pink-400" : "bg-transparent"
-      } z-50`}
+      }`}
     >
       <div className="container mx-auto px-4 py-2 flex justify-between items-center relative">
         <img src={image} alt="Logo" className="h-20 w-auto" />
-        <ul className="hidden md:flex space-x-6 font-bold">
-          <li>
-            <Link to="/" className="hover:text-gray-500">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link to="/signin" className="hover:text-gray-500">
-              Sign In
-            </Link>
-          </li>
-          <li>
-            <Link to="/locations" className="hover:text-gray-500">
-              Locations
-            </Link>
-          </li>
-          <li>
-            <Link to="/contact" className="hover:text-gray-500">
-              Contact
-            </Link>
-          </li>
-          <li>
-            <Link to="/cart" className="flex items-center">
-              <FaShoppingCart className="mr-1" />
-              <span className="bg-pink-500 text-white px-2 rounded-full">
-                {quantity}
-              </span>
-            </Link>
-          </li>
-        </ul>
-
+        {renderLinks()}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden text-3xl"
@@ -74,56 +74,7 @@ export const Navbar = () => {
       </div>
       {isOpen && (
         <div className="md:hidden bg-[#f9f3e4] shadow-lg p-4 mt-2 rounded-b-lg">
-          <ul className="flex flex-col items-center space-y-4">
-            <li>
-              <Link
-                to="/"
-                onClick={handleLinkClick}
-                className="hover:text-gray-500 font-bold"
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/signin"
-                onClick={handleLinkClick}
-                className="hover:text-gray-500 font-bold"
-              >
-                Sign In
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/locations"
-                onClick={handleLinkClick}
-                className="hover:text-gray-500 font-bold"
-              >
-                Locations
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/contact"
-                onClick={handleLinkClick}
-                className="hover:text-gray-500 font-bold"
-              >
-                Contact
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/cart"
-                onClick={handleLinkClick}
-                className="hover:text-gray-500 flex items-center font-bold"
-              >
-                <FaShoppingCart className="mr-1" />
-                <span className="ml-1 bg-pink-500 text-white px-2 rounded-full">
-                  {quantity}
-                </span>
-              </Link>
-            </li>
-          </ul>
+          {renderLinks(true)}
         </div>
       )}
     </nav>

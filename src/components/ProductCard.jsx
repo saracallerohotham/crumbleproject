@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { CartContext } from "../context";
+import { Notification } from "./Notification";
 
 export const ProductCard = ({ id, imageSrc, title, description, price }) => {
   const [, setCart] = useContext(CartContext);
@@ -18,8 +19,8 @@ export const ProductCard = ({ id, imageSrc, title, description, price }) => {
       }
     });
 
+    // actualizar noti
     setNotification(`${title} added to cart!`);
-
     setTimeout(() => {
       setNotification("");
     }, 2000);
@@ -65,12 +66,8 @@ export const ProductCard = ({ id, imageSrc, title, description, price }) => {
         </div>
       </div>
 
-      {/* Cartelito de notificación */}
-      {notification && (
-        <div className="absolute top-0 right-0 mt-4 mr-4 bg-pink-500 text-white p-2 rounded shadow-lg">
-          {notification}
-        </div>
-      )}
+      {/* cartelito noti */}
+      <Notification message={notification} />
     </div>
   );
 };
