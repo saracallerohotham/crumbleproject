@@ -49,7 +49,7 @@ export const Cart = () => {
   const finalPrice = totalPrice + tax;
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-green-100">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-pink-200">
       <h1 className="text-2xl font-bold mb-2">Cart ({quantity} items)</h1>
       <h2 className="text-xl text-pink-400 mb-4">
         Subtotal: ${totalPrice.toFixed(2)} | Tax: ${tax.toFixed(2)} | Total: $
