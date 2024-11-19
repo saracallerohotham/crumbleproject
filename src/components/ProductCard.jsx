@@ -19,7 +19,7 @@ export const ProductCard = ({ id, imageSrc, title, description, price }) => {
       }
     });
 
-    // actualizar noti
+    // noti al agregar producto
     setNotification(`${title} added to cart!`);
     setTimeout(() => {
       setNotification("");
@@ -30,13 +30,20 @@ export const ProductCard = ({ id, imageSrc, title, description, price }) => {
     setCart((currItems) => {
       const currentItem = currItems.find((item) => item.id === id);
       if (currentItem?.quantity === 1) {
+        setNotification(`${title} removed from cart!`); // Notificación al eliminar completamente
         return currItems.filter((item) => item.id !== id);
       } else {
+        setNotification(`${title} quantity decreased!`); // Notificación al reducir cantidad
         return currItems.map((item) =>
           item.id === id ? { ...item, quantity: item.quantity - 1 } : item
         );
       }
     });
+
+    // limpiar notificacion
+    setTimeout(() => {
+      setNotification("");
+    }, 2000);
   };
 
   return (
@@ -59,14 +66,14 @@ export const ProductCard = ({ id, imageSrc, title, description, price }) => {
           </button>
           <button
             onClick={removeItem}
-            className="px-4 py-2 bg-gray-500 text-white font-bold rounded-full hover:bg-gray-700 transition-colors duration-300"
+            className="px-4 py-2 bg-red-500 text-white font-bold rounded-full hover:bg-red-700 transition-colors duration-300"
           >
             Remove
           </button>
         </div>
       </div>
 
-      {/* cartelito noti */}
+      {/* cartelito de notificacion */}
       <Notification message={notification} />
     </div>
   );

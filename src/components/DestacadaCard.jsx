@@ -11,7 +11,7 @@ export const DestacadaCard = ({
     <div
       className={`flex ${
         reverse ? "flex-row-reverse" : "flex-row"
-      } items-center hover:bg-blue-200 w-full max-w-4xl rounded-3xl bg-white text-black transition-colors duration-300`}
+      } items-center hover:bg-pink-200 w-full max-w-4xl rounded-3xl bg-white text-black transition-colors duration-300`}
     >
       <img src={imageSrc} alt={title} className="w-48 h-48 object-cover" />
 

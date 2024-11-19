@@ -73,7 +73,7 @@ export const Navbar = () => {
         </button>
       </div>
       {isOpen && (
-        <div className="md:hidden bg-[#f9f3e4] shadow-lg p-4 mt-2 rounded-b-lg">
+        <div className="md:hidden bg-pink-400 shadow-lg p-4 mt-2 rounded-b-lg">
           {renderLinks(true)}
         </div>
       )}

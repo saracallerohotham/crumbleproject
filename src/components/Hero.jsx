@@ -11,12 +11,6 @@ function Hero() {
       >
         <source src={heroVideo} type="video/mp4" />
       </video>
-
-      <div className="absolute bottom-10 w-full flex justify-center z-10">
-        <button className="px-8 py-3 bg-black text-white font-bold rounded-full hover:text-black hover:bg-transparent  hover:border-black">
-          Order Now
-        </button>
-      </div>
     </div>
   );
 }
