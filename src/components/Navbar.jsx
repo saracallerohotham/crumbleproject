@@ -34,7 +34,7 @@ export const Navbar = () => {
   const navLinks = [
     { to: "/", label: "Home" },
     { to: "/signin", label: "Sign In" },
-    { to: "/locations", label: "Locations" },
+    { to: "/aboutus", label: "About Us" },
     { to: "/contact", label: "Contact" },
     { to: "/cart", label: "Cart", icon: <FaShoppingCart /> },
   ];
