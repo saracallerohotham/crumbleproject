@@ -4,16 +4,29 @@ import { FaShoppingCart } from "react-icons/fa";
 import image from "../assets/image.png";
 import { CartContext } from "../context";
 
+// hook par detectar si esta desde el celular
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return isMobile;
+};
+
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const isMobile = useIsMobile();
   const [cart] = useContext(CartContext);
 
   const quantity = cart.reduce((acc, curr) => acc + curr.quantity, 0);
 
-  const handleScroll = () => setIsScrolled(window.scrollY > 0);
-
   useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 0);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -56,12 +69,19 @@ export const Navbar = () => {
     </ul>
   );
 
+  const navbarClasses = [
+    "fixed top-0 left-0 w-full transition-all duration-300 z-50",
+    isMobile && isOpen
+      ? "bg-pink-400"
+      : isScrolled
+      ? "bg-pink-400"
+      : "bg-transparent",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <nav
-      className={`fixed top-0 left-0 w-full transition-all duration-300 z-50 ${
-        isScrolled ? "bg-pink-400" : "bg-transparent"
-      }`}
-    >
+    <nav className={navbarClasses}>
       <div className="container mx-auto px-4 py-2 flex justify-between items-center relative">
         <img src={image} alt="Logo" className="h-20 w-auto" />
         {renderLinks()}
